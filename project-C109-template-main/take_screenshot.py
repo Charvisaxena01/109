@@ -34,17 +34,9 @@ while True:
                 cv2.circle(img, (x,y), 15, (255, 0, 0), cv2.FILLED)
 
                 #writing condition to check if finger is folded i.e checking if finger tip starting value is smaller than finger starting position which is inner landmark. for index finger    
-
                 #if finger folded changing color to green
                 if lm_list[tip].x < lm_list[tip - 3].x:
-                    image = pyautogui.screenshot()
-                    image =cv2.cvtColor(np.array(image),cv2.COLOR_RGB2BGR)
-                    cv2.imwrite("in_memory_to_disk.png",image)
-
-                    pyautogui.screenshot("straight_to_disk.png")
-
-                    image =cv2.imread("straight_to_disk.png")
-                    cv2.imshow("screenshot",imutils.resize(image,width=600))
+                                        
                     cv2.circle(img, (x,y), 15, (0, 255, 0), cv2.FILLED)
                     finger_fold_status.append(True)
                 else:
@@ -55,22 +47,25 @@ while True:
              #checking if all fingers are folded
             if all(finger_fold_status):
                 
-                # WRITE THE CODE HERE   
+                # WRITE THE CODE HERE
+                image = pyautogui.screenshot()
+                image = cv2.cvtColor(np.array(image),cv2.COLOR_RGB2BGR)
+                cv2.imwrite("in_memory_to_disk.png",image)
+                pyautogui.screenshot("straight_to_disk.png")
+                    
+                image =cv2.imread("straight_to_disk.png")
+                cv2.imshow("Screenshot",imutils.resize(image,width=600))
 
 
-a
+
+
+
 
 
             mp_draw.draw_landmarks(img, hand_landmark,
-            mp_hands.HAND_CONNECTIONS, mp_draw.DrawingSpec((0,0,255),2,2),a
-            mp_draw.DrawingSpec((0,255,0),4,2))a
+            mp_hands.HAND_CONNECTIONS, mp_draw.DrawingSpec((0,0,255),2,2),
+            mp_draw.DrawingSpec((0,255,0),4,2))
     
 
     cv2.imshow("hand tracking", img)
     cv2.waitKey(1)
-
-
-
-
-
-
