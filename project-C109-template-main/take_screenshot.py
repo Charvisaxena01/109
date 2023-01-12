@@ -44,7 +44,7 @@ while True:
                     pyautogui.screenshot("straight_to_disk.png")
 
                     image =cv2.imread("straight_to_disk.png")
-                    cv2.imshow("screenshot",imutils.resize(image,width=600)
+                    cv2.imshow("screenshot",imutils.resize(image,width=600))
                     cv2.circle(img, (x,y), 15, (0, 255, 0), cv2.FILLED)
                     finger_fold_status.append(True)
                 else:
